@@ -31,16 +31,37 @@ public enum Hobby {
 	}
 
 	public static List<Hobby> getRandoms() {
-		
+		Random random = new Random();
 		List<Hobby> hobbies = Arrays.asList(Hobby.values());
 		Collections.shuffle(hobbies);
-		
-		int r = rand.nextInt((Hobby.values().length));
-		for (int i = 0; i < r+1; i++) {
-			
-			List<Hobby> hobbies2 =new ArrayList<>().add(hobbies[i],i);
-		}
+		List<Hobby> hobbies2 = new ArrayList<>();
+		int nextRandom;
+		try{
+			for (int i = 0; i < 7; i++) {
+			nextRandom = random.nextInt(7 - i);
+	        hobbies2.add(hobbies.get(nextRandom));
+	        hobbies.remove(nextRandom);
+			}
+		}catch(Exception e) {
+				System.out.println("UnsupportedOperationException");
+			}
 		return hobbies2;
 	}
+//	public static ArrayList<Hobby> getRandoms() {
+//		Random random = new Random();
+//		int numOfElements = random.nextInt(7);
+//		Hobby[] hobbies = Hobby.values();
+//		ArrayList<Hobby> hobbies2 = new arrayList<>();
+//		try {
+//			for (int i = 0; i < numOfElements; i++) {
+//				int randomIndex = random.nextInt(hobbies.size());
+//				hobbies2.addAll(Arrays.asList(hobbies.get(randomIndex))); 
+//				hobbies.remove(randomIndex); 
+//			}
+//		}catch(Exception e){
+//			System.out.println("UnsupportedOperationException");
+//		}
+//		return hobbies2;
+//	}
 	
 }
